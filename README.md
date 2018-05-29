@@ -1,6 +1,6 @@
-# startup_namer
+# Flutter Tutorial
 
-A new Flutter project.
+A flutter project base on Google Codelabs to learn how to construct the mobile application (iOS and Android) using Flutter SDK. See https://flutter.io for more information and up-to-date. Enjoy codeing !!
 
 ## Getting Started
 
