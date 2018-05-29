@@ -2,129 +2,19 @@
 
 /** acquire all packages that required in this app */
 import 'package:flutter/material.dart';
+
 /// Uncomment below to enable Startup Name Generator (from Google Codelabs)
 /// import 'package:english_words/english_words.dart';
-import 'package:validate/validate.dart';
+import 'signin-tabbar.dart';
+//import 'signin-form.dart';
 
 // start to run the app
-void main() => runApp(new MyApp());
-
-// main class to run with stateless widget
-class MyApp extends StatelessWidget {
-  // create material theme of the app
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: new LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => new _LoginPageState();
-}
-
-class _LoginData {
-  String email = '';
-  String password = '';
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  _LoginData _data = _LoginData();
-
-  String _validateEmail(String value) {
-    try {
-      Validate.isEmail(value);
-    } catch (e) {
-      return 'The E-mail address must be a valid email address.';
-    }
-
-    return null;
-  }
-
-  String _validatePassword(String value) {
-    if (value.length < 8) {
-      return 'The password must be at least 8 characters.';
-    }
-
-    return null;
-  }
-
-  void submit() {
-    if (this._formKey.currentState.validate()) {
-      _formKey.currentState.save();
-
-      print('Printing the login data.');
-      print('Email: '+ _data.email);
-      print('Password: ' +_data.password);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Startup Name Generator'),
-      ),
-      body: new Container(
-          padding: new EdgeInsets.all(20.0),
-          child: new Form(
-            key: this._formKey,
-            child: new ListView(
-              children: <Widget>[
-
-                // textbox for email address 
-                new TextFormField(
-                    keyboardType: TextInputType.emailAddress, // Use email input type for emails.
-                    decoration: new InputDecoration(
-                        hintText: 'you@example.com',
-                        labelText: 'E-mail Address'),
-                    validator: this._validateEmail,
-                    onSaved: (String value) {
-                      this._data.email = value;
-                    }),
-                
-                // passwordbox for password 
-                new TextFormField(
-                    obscureText: true, // Use secure text for passwords.
-                    decoration: new InputDecoration(
-                        hintText: 'Password', labelText: 'Enter your password'),
-                    validator: this._validatePassword,
-                    onSaved: (String value) {
-                      this._data.password = value;
-                    }),
-                  
-                // button to login
-                new Container(
-                  width: screenSize.width,
-                  child: new RaisedButton(
-                    child: new Text(
-                      'Login',
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                    onPressed: this.submit,
-                    color: Colors.green,
-                  ),
-                  margin: new EdgeInsets.only(top: 20.0),
-                )
-              ],
-            ),
-          )),
-    );
-  }
-}
+//void main() => runApp(new MyApp());
+void main() => runApp(new SignInTabBar());
 
 ///
 /// Tutorial about Startup Name Generator (from Google Codelabs)
-/// 
+///
 
 /*class RandomWords extends StatefulWidget {
   @override
